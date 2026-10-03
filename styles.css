@@ -94,7 +94,8 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     #luke-site .luke-contact { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; }
     #luke-site .luke-portrait { position: relative; width: 200px; max-width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; margin: 0; }
     #luke-site .luke-portrait img { position: absolute; display: block; width: 126.3158%; max-width: none; height: auto; left: -5.2632%; top: -15.7895%; }
-    #luke-site .luke-home-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; border-top: 1px solid var(--luke-rule); padding-top: 24px; }
+    #luke-site .luke-selected-papers { border-top: 1px solid var(--luke-rule); padding: 24px 0 8px; }
+    #luke-site .luke-home-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; border-top: 1px solid var(--luke-rule); padding-top: 24px; }
     #luke-site .luke-home-links h2 { font-size: 21px; }
     #luke-site .luke-home-links h2 a { text-decoration: none; }
     #luke-site .luke-home-links h2 a:hover { text-decoration: underline; }
@@ -109,6 +110,7 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     #luke-site .luke-papers li + li { border-top: 1px solid var(--luke-rule); }
     #luke-site .luke-year { color: var(--luke-secondary); font-size: 13px; padding-top: 2px; }
     #luke-site .luke-papers h2,
+    #luke-site .luke-papers h3,
     #luke-site .luke-talks h2 {
       font-family: inherit;
       font-size: 16px;
@@ -116,8 +118,10 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
       font-weight: 500;
       margin: 0 0 5px;
     }
-    #luke-site .luke-papers h2 a { text-decoration: none; }
-    #luke-site .luke-papers h2 a:hover { text-decoration: underline; }
+    #luke-site .luke-papers h2 a,
+    #luke-site .luke-papers h3 a { text-decoration: none; }
+    #luke-site .luke-papers h2 a:hover,
+    #luke-site .luke-papers h3 a:hover { text-decoration: underline; }
     #luke-site .luke-authors { color: var(--luke-secondary); font-size: 12px; margin: 0 0 7px; }
     #luke-site .luke-authors strong { color: var(--luke-ink); font-weight: 500; }
     #luke-site .luke-publication-meta { color: var(--luke-secondary); font-size: 12px; margin: 0; }
