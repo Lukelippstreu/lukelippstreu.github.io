@@ -41,7 +41,7 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
       padding-bottom: 20px;
       border-bottom: 1px solid var(--luke-rule);
     }
-    #luke-site h1 {
+    #luke-site .luke-brand {
       font-family: var(--luke-heading);
       font-size: 39px;
       font-weight: 400;
@@ -49,10 +49,19 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
       letter-spacing: -1px;
       color: var(--luke-ink);
       margin: 0;
+      text-decoration: none;
     }
     #luke-site nav { display: flex; gap: 24px; flex-wrap: wrap; }
     #luke-site nav a { font-size: 13px; text-decoration: none; }
     #luke-site nav a:hover { text-decoration: underline; }
+    #luke-site nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
+    #luke-site a:focus-visible,
+    #luke-site summary:focus-visible { outline: 2px solid var(--luke-accent); outline-offset: 5px; }
+    #luke-site .luke-page { padding-top: 32px; min-height: 60vh; }
+    #luke-site .luke-page-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; }
+    #luke-site .luke-page-heading > a { font-size: 13px; }
+    #luke-site .luke-page h1 { font: 400 30px/1.25 var(--luke-heading); letter-spacing: -.3px; margin: 0; }
+    #luke-site .luke-page-intro { color: var(--luke-secondary); font-size: 14px; margin: 12px 0 8px; }
     #luke-site .luke-introduction {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 200px;
@@ -67,7 +76,8 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
       margin: 0 0 10px;
       font-weight: 500;
     }
-    #luke-site h2 {
+    #luke-site h2,
+    #luke-site .luke-research-heading {
       font-family: var(--luke-heading);
       color: var(--luke-ink);
       font-size: 25px;
@@ -84,17 +94,11 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     #luke-site .luke-contact { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; }
     #luke-site .luke-portrait { position: relative; width: 200px; max-width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; margin: 0; }
     #luke-site .luke-portrait img { position: absolute; display: block; width: 126.3158%; max-width: none; height: auto; left: -5.2632%; top: -15.7895%; }
-    #luke-site .luke-section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 12px 24px;
-      border-top: 1px solid var(--luke-rule);
-      padding-top: 21px;
-      margin-bottom: 3px;
-    }
-    #luke-site .luke-section-heading > a { font-size: 13px; }
+    #luke-site .luke-home-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; border-top: 1px solid var(--luke-rule); padding-top: 24px; }
+    #luke-site .luke-home-links h2 { font-size: 21px; }
+    #luke-site .luke-home-links h2 a { text-decoration: none; }
+    #luke-site .luke-home-links h2 a:hover { text-decoration: underline; }
+    #luke-site .luke-home-links p { font-size: 13px; color: var(--luke-secondary); margin: 10px 0 0; }
     #luke-site .luke-papers { list-style: none; padding: 0; margin: 0; }
     #luke-site .luke-papers li {
       display: grid;
@@ -104,24 +108,42 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     }
     #luke-site .luke-papers li + li { border-top: 1px solid var(--luke-rule); }
     #luke-site .luke-year { color: var(--luke-secondary); font-size: 13px; padding-top: 2px; }
-    #luke-site h3 {
+    #luke-site .luke-papers h2,
+    #luke-site .luke-talks h2 {
       font-family: inherit;
       font-size: 16px;
       line-height: 1.45;
       font-weight: 500;
       margin: 0 0 5px;
     }
-    #luke-site h3 a { text-decoration: none; }
-    #luke-site h3 a:hover { text-decoration: underline; }
+    #luke-site .luke-papers h2 a { text-decoration: none; }
+    #luke-site .luke-papers h2 a:hover { text-decoration: underline; }
     #luke-site .luke-authors { color: var(--luke-secondary); font-size: 12px; margin: 0 0 7px; }
+    #luke-site .luke-authors strong { color: var(--luke-ink); font-weight: 500; }
+    #luke-site .luke-publication-meta { color: var(--luke-secondary); font-size: 12px; margin: 0; }
+    #luke-site .luke-publication-meta + .luke-paper-description { margin-top: 7px; }
     #luke-site .luke-paper-description { font-size: 14px; margin: 0; }
-    #luke-site .luke-footer {
-      border-top: 1px solid var(--luke-rule);
-      margin-top: 8px;
-      padding-top: 21px;
-    }
-    #luke-site .luke-footer h2 { font-size: 22px; }
-    #luke-site .luke-footer p { font-size: 14px; margin: 10px 0 0; max-width: 740px; }
+    #luke-site .luke-more-papers { border-top: 1px solid var(--luke-rule); }
+    #luke-site .luke-more-papers summary { display: inline-flex; align-items: center; min-height: 44px; margin: 16px 0; padding: 4px 15px; border: 1px solid var(--luke-rule); border-radius: 4px; color: var(--luke-accent); font-size: 14px; cursor: pointer; list-style: none; }
+    #luke-site .luke-more-papers summary::-webkit-details-marker { display: none; }
+    #luke-site .luke-more-papers summary:hover { border-color: var(--luke-accent); }
+    #luke-site .luke-ellipsis { font-size: 21px; padding-right: 6px; }
+    #luke-site .luke-when-open { display: none; }
+    #luke-site .luke-more-papers[open] .luke-when-closed { display: none; }
+    #luke-site .luke-more-papers[open] .luke-when-open { display: inline; }
+    #luke-site .luke-talks { list-style: none; margin: 0; padding: 0; }
+    #luke-site .luke-talks > li { padding: 20px 0; }
+    #luke-site .luke-talks > li + li { border-top: 1px solid var(--luke-rule); }
+    #luke-site .luke-talk-meta { color: var(--luke-secondary); font-size: 13px; margin: 6px 0 10px; }
+    #luke-site .luke-video-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; }
+    #luke-site .luke-video-link svg { width: 13px; height: 13px; fill: currentColor; }
+    #luke-site .luke-alternative { font-size: 13px; margin: 10px 0 0; color: var(--luke-secondary); }
+    #luke-site .luke-community-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 36px; padding-top: 18px; }
+    #luke-site .luke-community-grid h2 { font-family: var(--luke-heading); font-size: 19px; }
+    #luke-site .luke-service { list-style: none; padding: 0; margin: 12px 0 0; font-size: 14px; }
+    #luke-site .luke-service li + li { margin-top: 14px; }
+    #luke-site .luke-service-meta { display: block; color: var(--luke-secondary); font-size: 12px; margin-top: 3px; }
+    #luke-site .luke-supervision { font-size: 14px; margin: 12px 0 0; }
     #luke-site .luke-footer-end {
       display: flex;
       justify-content: space-between;
@@ -135,11 +157,15 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
       #luke-site { padding: 25px 28px; }
       #luke-site .luke-introduction { grid-template-columns: 1fr; gap: 23px; padding-top: 26px; }
       #luke-site .luke-portrait { width: 144px; grid-row: 1; }
+      #luke-site .luke-community-grid { grid-template-columns: 1fr; gap: 26px; }
+      #luke-site .luke-home-links { grid-template-columns: 1fr; gap: 24px; }
     }
     @media (max-width: 420px) {
       #luke-site { padding: 23px 20px; }
-      #luke-site h1 { font-size: 34px; }
-      #luke-site h2 { font-size: 23px; }
+      #luke-site .luke-brand { font-size: 34px; }
+      #luke-site h2,
+      #luke-site .luke-research-heading { font-size: 23px; }
+      #luke-site .luke-page h1 { font-size: 27px; }
       #luke-site nav { gap: 24px; }
       #luke-site .luke-papers li { grid-template-columns: 1fr; gap: 4px; }
       #luke-site .luke-contact { gap: 9px; }
@@ -147,9 +173,10 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     @media (pointer: coarse) {
       #luke-site nav a,
       #luke-site .luke-contact a,
-      #luke-site .luke-section-heading > a {
+      #luke-site .luke-page-heading > a {
         display: inline-flex;
         align-items: center;
         min-height: 44px;
       }
+      #luke-site .luke-video-link { min-height: 44px; }
     }
