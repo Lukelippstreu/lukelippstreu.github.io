@@ -33,17 +33,19 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     }
     #luke-site a:hover { text-decoration-thickness: 2px; }
     #luke-site .luke-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px 28px;
-      padding-bottom: 20px;
       border-bottom: 1px solid var(--luke-rule);
     }
+    #luke-site .luke-profile {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding-bottom: 18px;
+    }
     #luke-site .luke-brand {
+      display: inline-block;
       font-family: var(--luke-heading);
-      font-size: 39px;
+      font-size: 42px;
       font-weight: 400;
       line-height: 1.2;
       letter-spacing: -1px;
@@ -51,10 +53,14 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
       margin: 0;
       text-decoration: none;
     }
-    #luke-site nav { display: flex; gap: 24px; flex-wrap: wrap; }
-    #luke-site nav a { font-size: 13px; text-decoration: none; }
+    #luke-site .luke-byline { display: flex; flex-wrap: wrap; gap: 2px 0; margin: 8px 0; font-size: 15px; color: var(--luke-secondary); }
+    #luke-site .luke-byline span:first-child { font-weight: 500; color: var(--luke-ink); }
+    #luke-site .luke-byline span + span::before { content: '·' / ''; padding: 0 .5em; }
+    #luke-site .luke-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; font-size: 13px; }
+    #luke-site nav { display: flex; gap: 0 25px; flex-wrap: wrap; border-top: 1px solid var(--luke-rule); }
+    #luke-site nav a { display: inline-flex; align-items: center; min-height: 43px; font-size: 14px; text-decoration: none; }
     #luke-site nav a:hover { text-decoration: underline; }
-    #luke-site nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; }
+    #luke-site nav a[aria-current="page"] { color: var(--luke-ink); box-shadow: inset 0 -2px var(--luke-accent); }
     #luke-site a:focus-visible,
     #luke-site summary:focus-visible { outline: 2px solid var(--luke-accent); outline-offset: 5px; }
     #luke-site .luke-page { padding-top: 32px; min-height: 60vh; }
@@ -63,18 +69,7 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     #luke-site .luke-page h1 { font: 400 30px/1.25 var(--luke-heading); letter-spacing: -.3px; margin: 0; }
     #luke-site .luke-page-intro { color: var(--luke-secondary); font-size: 14px; margin: 12px 0 8px; }
     #luke-site .luke-introduction {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 200px;
-      gap: 44px;
       padding: 32px 0 28px;
-    }
-    #luke-site .luke-kicker {
-      color: var(--luke-accent);
-      font-size: 12px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin: 0 0 10px;
-      font-weight: 500;
     }
     #luke-site h2,
     #luke-site .luke-research-heading {
@@ -86,13 +81,8 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
       letter-spacing: -.3px;
       margin: 0;
     }
-    #luke-site .luke-intro-copy { margin: 14px 0 0; }
-    #luke-site .luke-affiliation { margin-top: 18px; font-size: 14px; }
-    #luke-site .luke-affiliation p { margin: 0 0 8px; }
-    #luke-site .luke-role { font-weight: 500; }
-    #luke-site .luke-muted { color: var(--luke-secondary); }
-    #luke-site .luke-contact { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; }
-    #luke-site .luke-portrait { position: relative; width: 200px; max-width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; margin: 0; }
+    #luke-site .luke-intro-copy { margin: 14px 0 0; max-width: 80ch; }
+    #luke-site .luke-portrait { position: relative; width: 112px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; margin: 0; }
     #luke-site .luke-portrait img { position: absolute; display: block; width: 126.3158%; max-width: none; height: auto; left: -5.2632%; top: -15.7895%; }
     #luke-site .luke-selected-papers { border-top: 1px solid var(--luke-rule); padding: 24px 0 8px; }
     #luke-site .luke-home-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; border-top: 1px solid var(--luke-rule); padding-top: 24px; }
@@ -159,20 +149,24 @@ body { margin: 0; background: #fbfaf7; background: light-dark(#fbfaf7, #1c1b1a);
     }
     @media (max-width: 700px) {
       #luke-site { padding: 25px 28px; }
-      #luke-site .luke-introduction { grid-template-columns: 1fr; gap: 23px; padding-top: 26px; }
-      #luke-site .luke-portrait { width: 144px; grid-row: 1; }
+      #luke-site .luke-profile { gap: 16px; align-items: start; }
+      #luke-site .luke-byline { display: grid; gap: 1px; line-height: 1.4; font-size: 14px; }
+      #luke-site .luke-byline span + span::before { content: none; }
+      #luke-site .luke-portrait { width: clamp(68px, 18vw, 100px); }
+      #luke-site .luke-introduction { padding-top: 26px; }
+      #luke-site nav { column-gap: clamp(12px, 3.2vw, 22px); }
       #luke-site .luke-community-grid { grid-template-columns: 1fr; gap: 26px; }
       #luke-site .luke-home-links { grid-template-columns: 1fr; gap: 24px; }
     }
     @media (max-width: 420px) {
       #luke-site { padding: 23px 20px; }
-      #luke-site .luke-brand { font-size: 34px; }
+      #luke-site .luke-brand { font-size: clamp(28px, 8vw, 34px); }
       #luke-site h2,
       #luke-site .luke-research-heading { font-size: 23px; }
       #luke-site .luke-page h1 { font-size: 27px; }
-      #luke-site nav { gap: 24px; }
+      #luke-site nav a { font-size: 13px; }
       #luke-site .luke-papers li { grid-template-columns: 1fr; gap: 4px; }
-      #luke-site .luke-contact { gap: 9px; }
+      #luke-site .luke-contact { gap: 0 12px; }
     }
     @media (pointer: coarse) {
       #luke-site nav a,
